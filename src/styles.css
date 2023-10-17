@@ -1,6 +1,7 @@
 :root {
   --purple: #885df1;
-  --gray: #878787;
+  --gray: rgba(39, 33, 66, 0.4);
+  --red: #f65282;
 }
 body {
   background-color: #f9f7fe;
@@ -10,15 +11,22 @@ body {
   background-color: white;
   /* box-shadow: 1px 1px rgb(236, 235, 235); */
   margin: 100px auto;
-  max-width: 1000px;
+  max-width: 780px;
 }
 .input-form {
   background-color: #f9f7fe;
+  height: 50px;
 }
 .search {
   background-color: var(--purple);
   color: white;
   font-weight: 600;
+  height: 50px;
+}
+
+.search:hover {
+  background: var(--purple);
+  color: white;
 }
 .city {
   color: #272142;
@@ -36,6 +44,16 @@ body {
   top: -34px;
   font-size: 28px;
   color: #212121;
+}
+.humidity,
+.wind {
+  color: var(--red);
+}
+.forecast-days ul li {
+  /* text-align: center; */
+  list-style-type: none;
+  padding: 0 30px;
+  color: rgba(39, 33, 66, 0.4);
 }
 footer div {
   color: var(--gray);
