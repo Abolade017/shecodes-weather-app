@@ -2,8 +2,15 @@
   --purple: #885df1;
   --gray: #878787;
 }
+body {
+  background-color: #f9f7fe;
+}
 .App {
   font-family: sans-serif;
+  background-color: white;
+  /* box-shadow: 1px 1px rgb(236, 235, 235); */
+  margin: 100px auto;
+  max-width: 1000px;
 }
 .input-form {
   background-color: #f9f7fe;
@@ -13,10 +20,27 @@
   color: white;
   font-weight: 600;
 }
+.city {
+  color: #272142;
+}
 .weather-details p {
   color: var(--gray);
   line-height: 0.5;
 }
 .temperature {
   font-size: 80px;
+  color: #212121;
+}
+.unit {
+  position: relative;
+  top: -34px;
+  font-size: 28px;
+  color: #212121;
+}
+footer div {
+  color: var(--gray);
+}
+footer span a {
+  color: var(--purple);
+  text-decoration: none;
 }
