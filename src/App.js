@@ -6,8 +6,9 @@ import Forecast from "./Forecast";
 export default function App() {
   const [weather, setWeather] = useState({})
   const [city, setCity] = useState("");
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-  const listDays = days.map(day =>
+  let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  let forcastDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const listDays = forcastDays.map(day =>
     <li>{day}</li>
   );
   function formatDate(timestamp) {
@@ -31,7 +32,8 @@ export default function App() {
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
       wind: response.data.wind.speed,
-      time: formatDate(response.data.dt)
+      time: formatDate(response.data.dt),
+      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     })
 
   }
@@ -72,7 +74,7 @@ export default function App() {
         <div className="pt-2">
           <h1 className="text-capitalize city">{weather.city}</h1>
           <div>
-            <p className="">Saturday {weather.time} , {weather.description}</p>
+            <p className="">{weather.time} , {weather.description}</p>
             <p>
               Humidity: <span className="humidity">{weather.humidity}%</span>, Wind:
               <span className="wind">{weather.wind}km/h</span>
@@ -81,7 +83,7 @@ export default function App() {
         </div>
         <div>
           <div className="d-flex ">
-            <div></div>
+            <div><img src={weather.icon} /></div>
             <div>
               <span className="temperature">{Math.round(weather.temperature)}</span>
               <span className="unit">°C</span>
