@@ -27,19 +27,24 @@ export default function App() {
   function displayWeather(response) {
     console.log(response.data)
     setWeather({
+      ready: true,
       temperature: response.data.main.temp,
       city: response.data.name,
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
       wind: response.data.wind.speed,
       time: formatDate(response.data.dt),
-      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      longitude: response.data.coord.lon,
+      latitude: response.data.coord.lat,
+      coordinates: response.data.coord,
+
     })
 
   }
   function submitForm(event) {
     let apiKey = "094780c710fa4efd669f0df8c3991927"
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units="metric"`
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
     event.preventDefault();
     axios.get(apiUrl).then(displayWeather)
 
@@ -56,7 +61,7 @@ export default function App() {
         width="150"
       />
       <form onSubmit={submitForm} className="px-4">
-        <div class="d-flex my-5 ">
+        <div className="d-flex my-5 ">
           <input
             type="text"
             className="form-control input-form"
@@ -91,10 +96,11 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div className="forecast-days px-4 pt-3">
+      {/* <div className="forecast-days px-4 pt-3">
         <ul className="d-flex justify-content-between">{listDays}</ul>
-      </div>
-      <Forecast />
+      </div> */}
+      {/* <Forecast latitude={weather.latitude} longitude={weather.longitude} /> */}
+      <Forecast coordinates={weather.coordinates} city={weather.city} />
       <footer className="py-5">
         <div className="text-center">
           This project was coded by<span><a href="https://www.shecodes.io/" target="_blank"> SheCodes</a></span> and is <span><a href="https://github.com/Abolade017/shecodes-weather-app" target="_blank">open-sourced on GitHub</a> </span>
